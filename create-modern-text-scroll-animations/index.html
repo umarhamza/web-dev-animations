@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Modern Text Scroll Animations - Demo 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section>
+        <h1>Scroll down for awesomeness</h1>
+    </section>
+    <section>
+        <p class="reveal-type">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officia fugiat est</p>
+    </section>
+    <section>
+        <p class="reveal-type">Qui delectus, ea atque optio esse eveniet eos! Vero quaerat quae dolorem quisquam!</p>
+    </section>
+    <section>
+        <p class="reveal-type">Ea atque optio esse lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis quos
+        </p>
+    </section>
+    <!--  -->
+    <section>
+        <p class="reveal-type" data-bg-color="#ccc" data-fg-color="teal">Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Id officia fugiat est</p>
+    </section>
+    <section>
+        <p class="reveal-type" data-bg-color="#b6b600" data-fg-color="black">Qui delectus, ea atque optio esse eveniet
+            eos! Vero quaerat quae dolorem quisquam!</p>
+    </section>
+    <section>
+        <p class="reveal-type" data-bg-color="#353535" data-fg-color="orange">Ea atque optio esse lorem ipsum dolor
+            sit, amet consectetur adipisicing elit. Omnis quos
+        </p>
+    </section>
+    <section>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+        integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+        integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.25/bundled/lenis.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger)
+
+        const splitTypes = document.querySelectorAll('.reveal-type')
+
+        splitTypes.forEach((char, i) => {
+            const bg = char.dataset.bgColor
+            const fg = char.dataset.fgColor
+
+            const text = new SplitType(char, {
+                types: 'chars'
+            })
+
+            if (i === 0) {
+                fadeIn(text, char)
+            } else if (i === 1) {
+                inFromBottom(text, char)
+            } else if (i === 2) {
+                scaleFromTop(text, char)
+            } else if (i > 2 && i < 6) {
+                colorSlideIn(text, char, bg, fg)
+            } else {
+                gsap.from(text.chars, {
+                    scrollTrigger: {
+                        trigger: char,
+                        start: 'top 80%',
+                        end: 'top 20%',
+                        scrub: true,
+                        markers: false
+                    },
+                    opacity: 0.2,
+                    stagger: 0.1,
+                })
+            }
+
+        })
+
+        function fadeIn(text, char) {
+            gsap.from(text.chars, {
+                scrollTrigger: {
+                    trigger: char,
+                    start: 'top 80%',
+                    end: 'top 20%',
+                    scrub: true,
+                    markers: false
+                },
+                opacity: 0.2,
+                stagger: 0.1,
+            })
+        }
+
+        function inFromBottom(text, char) {
+            gsap.from(text.chars, {
+                scrollTrigger: {
+                    trigger: char,
+                    start: 'top 80%',
+                    end: 'top 20%',
+                    scrub: true,
+                    markers: false
+                },
+                y: 50,
+                opacity: 0,
+                stagger: 0.1,
+            })
+        }
+
+        function scaleFromTop(text, char) {
+            gsap.from(text.chars, {
+                scrollTrigger: {
+                    trigger: char,
+                    start: 'top 80%',
+                    end: 'top 20%',
+                    scrub: true,
+                    markers: false
+                },
+                scaleY: 0,
+                y: -20,
+                transformOrigin: 'top',
+                stagger: 0.1,
+            })
+        }
+
+        function colorSlideIn(text, char, bg, fg) {
+            gsap.fromTo(text.chars, {
+                color: bg,
+            }, {
+                color: fg,
+                duration: 0.1,
+                stagger: 0.02,
+                scrollTrigger: {
+                    trigger: char,
+                    start: 'top 80%',
+                    end: 'top 20%',
+                    scrub: false,
+                    markers: false,
+                    toggleActions: 'play play reverse reverse'
+                }
+            })
+        }
+
+        const lenis = new Lenis()
+
+        lenis.on('scroll', (e) => {
+            // console.log(e)
+        })
+
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf)
+    </script>
+</body>
+
+</html>
