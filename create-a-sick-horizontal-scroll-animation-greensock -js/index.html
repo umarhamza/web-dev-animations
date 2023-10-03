@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Sick Horizontal Scroll Animation | GreenSock / JS</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container scrollx">
+            <svg width="100%" height="10" x="0" viewBox="0 0 223 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" x="0" clip-rule="evenodd" d="M2.91465 1H110.085C110.291 0.417404 110.847 0 111.5 0C112.153 0 112.709 0.417404 112.915 1H220V1.5V2H112.915C112.709 2.5826 112.153 3 111.5 3C110.847 3 110.291 2.5826 110.085 2H2.91465C2.70873 2.5826 2.15311 3 1.5 3C0.846886 3 0.291267 2.5826 0.08535 2H0V1.5V1H0.08535C0.291267 0.417404 0.846886 0 1.5 0C2.15311 0 2.70873 0.417404 2.91465 1ZM220 1.5C220 2.32843 220.672 3 221.5 3C222.328 3 223 2.32843 223 1.5C223 0.67157 222.328 0 221.5 0C220.672 0 220 0.67157 220 1.5Z" fill="#D9D9D9"/>
+                <mask id="mask0_2_18" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="223" height="3">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.91465 1H110.085C110.291 0.417404 110.847 0 111.5 0C112.153 0 112.709 0.417404 112.915 1H220V1.5V2H112.915C112.709 2.5826 112.153 3 111.5 3C110.847 3 110.291 2.5826 110.085 2H2.91465C2.70873 2.5826 2.15311 3 1.5 3C0.846891 3 0.291271 2.5826 0.0853529 2H0V1.5V1H0.0853529C0.291271 0.417404 0.846891 0 1.5 0C2.15311 0 2.70873 0.417404 2.91465 1ZM220 1.5C220 2.32843 220.672 3 221.5 3C222.328 3 223 2.32843 223 1.5C223 0.671573 222.328 0 221.5 0C220.672 0 220 0.671573 220 1.5Z" fill="#D9D9D9"/>
+                </mask>
+                <g mask="url(#mask0_2_18)">
+                <rect d="M-193 -2H34V5H-193V-2Z" x="-200%" height="99" width="200%" class="mask" fill="black"/>
+                </g>
+                </svg>
+                
+            <section>
+                <span>Advanced</span>
+                <h1>Signifiy Elegance</h1>
+                <div class="col">
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum temporibus quia, quo placeat nam ut
+                        beatae necessitatibus blanditiis iure, vitae corrupti maiores accusantium reiciendis quaerat
+                        ducimus ex quidem dolores. Debitis?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae nemo eveniet corrupti laborum
+                        ducimus fugiat perspiciatis, reprehenderit ipsa ab explicabo minus unde dignissimos assumenda
+                        animi temporibus maxime deserunt quisquam! Laboriosam.</p>
+                </div>
+            </section>
+            <section>
+                <span>Advanced</span>
+                <h1>Signifiy Elegance</h1>
+                <div class="col">
+                    <p>Modi harum, veniam reiciendis beatae delectus officia? Nisi ullam commodi, tempora quis alias
+                        incidunt earum quos excepturi ut, perferendis nulla sequi necessitatibus, distinctio quasi odit
+                        saepe quo eligendi sed ratione?</p>
+                    <p>Officia fugiat blanditiis tempore officiis numquam sed provident nihil aspernatur, sint vero
+                        ipsum optio magnam perspiciatis hic placeat autem dolore repellat sequi distinctio temporibus
+                        perferendis? Illo error dolorem autem pariatur.</p>
+                </div>
+            </section>
+            <section>
+                <span>Advanced</span>
+                <h1>Signifiy Elegance</h1>
+                <div class="col">
+                    <p>Recusandae, dolorem, id ullam ipsum laborum possimus totam quas distinctio alias temporibus
+                        debitis doloremque esse asperiores quidem numquam adipisci cupiditate ex, assumenda expedita
+                        consequatur beatae et quis. Veniam, quasi et.</p>
+                    <p>Necessitatibus dolores adipisci eligendi nesciunt consectetur, corrupti vitae, est harum
+                        blanditiis pariatur, sed asperiores voluptatum veritatis beatae itaque aspernatur dignissimos
+                        nostrum! Maiores quam obcaecati, cum rem quidem similique minima quo?</p>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+        integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+        integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.25/bundled/lenis.min.js"></script>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
