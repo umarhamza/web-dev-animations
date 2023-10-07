@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Reveal Animation GSAP</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="counter"></div>
+    <div class="overlay">
+        <div class="bar"></div>
+    </div>
+
+    <div class="container">
+        <nav class="transparent">
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header transparent">
+            <h1>
+                <span class="h1">H</span>
+                <span class="h1">A</span>
+                <span class="h1">M</span>
+                <span class="h1">Z</span>
+                <span class="h1">A</span>
+                <span class="h1">.</span>
+            </h1>
+        </div>
+        <div class="hero transparent">
+            <img src="./hero.jpg" alt="" />
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+        integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const counter = document.querySelector(".counter")
+        const overlay = document.querySelector(".overlay")
+
+        function duplicateBars() {
+            const bar = overlay.querySelector(".bar");
+
+            for (let i = 0; i <= 8; i++) {
+                const clonedBar = bar.cloneNode(true)
+                overlay.appendChild(clonedBar);
+            }
+        }
+
+        function startLoader() {
+            let currentValue = 0;
+
+            function updateCounter() {
+                if (currentValue === 100) return;
+
+                currentValue += Math.floor(Math.random() * 10) + 1;
+
+                if (currentValue > 100) currentValue = 100;
+
+                counter.textContent = currentValue;
+
+                let delay = Math.floor(Math.random() * 200) + 50;
+                setTimeout(updateCounter, delay);
+            }
+
+            updateCounter();
+        }
+
+        function gsapLoad() {
+            const bars = document.querySelectorAll(".bar");
+
+            const tl = gsap.timeline({
+                defaults: {
+                    ease: "power4.inOut"
+                }
+            });
+
+            tl
+                .set(bars, {
+                    width: "10vw"
+                })
+                .to(counter, {
+                    delay: 2.5,
+                    duration: 0.5,
+                    opacity: 0,
+                })
+                .to(bars, {
+                    height: 0,
+                    stagger: 0.1
+                })
+                .fromTo(".hero", {
+                    y: 400
+                }, {
+                    y: 0,
+                    duration: 1.5
+                }, "-=1")
+                .fromTo(".h1", {
+                    y: 300,
+                    opacity: 0,
+                }, {
+                    y: 0,
+                    duration: 1.5,
+                    opacity: 1,
+                    stagger: 0.1,
+                }, "-=1")
+                .to(overlay, {
+                    height: 0,
+                    pointerEvents: "none"
+                })
+
+
+            /*  
+             gsap.set(bars, {
+                  width: "10vw"
+              });
+  
+              gsap.to(counter, 0.25, {
+                  delay: 2.5,
+                  opacity: 0,
+              });
+  
+              gsap.to(bars, 1.5, {
+                  delay: 3.5,
+                  height: 0,
+                  ease: "power4.inOut",
+                  stagger: 0.1
+              })
+  
+              gsap.fromTo(".h1", {
+                  y: 700
+              }, {
+                  delay: 4,
+                  y: 0,
+                  stagger: 0.1,
+                  ease: "power4.inOut"
+              });
+  
+              gsap.fromTo(".hero", {
+                  y: 400
+              }, {
+                  delay: 4.5,
+                  y: 0,
+                  ease: "power4.inOut"
+              }); */
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            duplicateBars();
+            startLoader();
+            gsapLoad();
+        });
+    </script>
+</body>
+
+</html>
