@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Image Zoom</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="hero">
+        <h1 class="heading hero-heading"><span class="lighter">Scaling up</span> The Mountains</h1>
+    </div>
+    <section class="image-container">
+        <div class="inner">
+            <img src="./hero.jpg" alt="" />
+        </div>
+    </section>
+    <section class="end-section">
+        <h2 class="heading section-heading">
+            <span class="lighter anim-text">And Scaling</span>
+            <span class="anim-text">Back Down Again</span>
+            <h2>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+        integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+        integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.25/bundled/lenis.min.js"></script>
+
+    <script>
+        const animatedTexts = gsap.utils.toArray('.anim-text');
+        const innerTween = gsap.to('.inner', {
+            scale: 1,
+            scrollTrigger: {
+                start: "top left",
+                end: "20% left",
+                pin: true,
+                scrub: 1,
+            }
+        });
+
+        gsap.to('.hero-heading', {
+            yPercent: 100,
+            opacity: 0,
+            scale: 0.7,
+            scrollTrigger: {
+                duration: 1,
+                scrub: 1
+            }
+        });
+
+        gsap.from(".anim-text", {
+            yPercent: -200,
+            scale: 0.9,
+            delay: 0.5,
+            opacity: 0,
+            duration: 2,
+            ease: "ease",
+            stagger: 0.1,
+            scrollTrigger: {
+                trigger: ".end-section",
+                start: "left 80%",
+                toggleActions: 'play play reverse reverse'
+
+            }
+        })
+
+        const lenis = new Lenis()
+
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf)
+    </script>
+</body>
+
+</html>
