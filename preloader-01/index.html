@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="preloader">
+        <div class="counter">
+            <span class="counter-text"></span><span>%</span>
+        </div>
+        <div class="loading-text" data-text="Loading">
+            <span>Loading</span>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+        integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        const preloader = document.querySelector(".preloader");
+        const counterText = preloader.querySelector(".counter-text");
+        const loading = preloader.querySelector(".loading-text");
+        const loadingText = loading.querySelector("span");
+
+        function startLoader() {
+            let currentValue = 0;
+
+            function updateCounter() {
+                if (currentValue === 100) {
+                    loading.style.maxWidth = "0";
+                    setTimeout(() => {
+                        preloader.style.clipPath = "polygon(0 0, 100% 0, 100% 0, 0 0)";
+                        preloader.style.pointerEvents = "none";
+                    }, 800);
+                    return;
+                }
+
+                // Get a random number between 1 and 10, then add it to currentValue
+                currentValue += Math.floor(Math.random() * 10) + 1;
+
+                // If currentValue has counted up passed 100, reset it to 100
+                if (currentValue > 100) currentValue = 100;
+
+                counterText.textContent = currentValue;
+                loadingText.style.clipPath = `polygon(0% 0%, ${currentValue}% 0%, ${currentValue}% 100%, 0% 100%)`;
+
+                // Wait between 50 and 200 ms, then run updateCounter recursively
+                const delay = Math.floor(Math.random() * 200) + 50;
+                setTimeout(updateCounter, delay);
+            }
+
+            updateCounter();
+
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            startLoader();
+        });
+    </script>
+</body>
+
+</html>

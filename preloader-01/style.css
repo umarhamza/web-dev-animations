@@ -1,0 +1,72 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: inherit;
+    transition: all 0.3s ease-in-out;
+}
+
+html,
+body {
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    background: #000;
+    color: #fff;
+    font-size: 16px;
+}
+
+.preloader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-transform: uppercase;
+    font-size: 4rem;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    opacity: 1;
+    transition: all 1s ease-in-out;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.counter {
+    font-weight: lighter;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-right: 0.2em;
+}
+
+.counter-text {
+    text-align: right;
+    min-width: 120px;
+    display: block;
+}
+
+.loading-text {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    transition: max-width 0.7s ease-in-out;
+}
+
+.loading-text span {
+    font-weight: bolder;
+    color: #fff;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+    position: relative;
+    z-index: 2;
+}
+
+.loading-text::after {
+    font-weight: bolder;
+    color: #333;
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
