@@ -9,7 +9,7 @@ gsap.set(photos, { yPercent: 101 });
 const mm = gsap.matchMedia();
 
 // add media query. When it matches, the associated function will run
-mm.add("(min-width: 600px)", () => {
+mm.add("(min-width: 1024px)", () => {
     console.log('desktop');
 
     ScrollTrigger.create({

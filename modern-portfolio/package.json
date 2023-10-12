@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  },
+  "name": "modern-portfolio",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/input.css -o ./assets/css/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

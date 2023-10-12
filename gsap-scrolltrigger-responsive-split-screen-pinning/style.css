@@ -15,7 +15,7 @@ h2 {
 
 p {
     margin-bottom: 10px;
-    font-size: 4vw;
+    font-size: 20px;
 }
 
 section {
@@ -35,25 +35,30 @@ aside {
     display: none;
 }
 
+.desktopPhotos,
+.desktopPhoto,
+.mobilePhoto {
+    height: 50vh;
+}
+
 .desktopPhotos {
     overflow: hidden;
     position: relative;
-    height: 200px;
 }
 
 .desktopPhoto,
 .mobilePhoto {
     width: 100%;
     max-width: 500px;
-    height: 200px;
     background: #000;
     border-radius: 20px;
 }
 
 @media screen and (min-width: 1024px) {
+
     section,
     .sidebar {
-         /* @NOTE: This unhides the .desktopPhoto class */
+        /* @NOTE: This unhides the .desktopPhoto class */
         display: flex;
         min-height: 100vh;
         flex-direction: column;

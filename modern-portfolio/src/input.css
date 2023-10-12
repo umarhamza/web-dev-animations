@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Montserrat', sans-serif;    
+    background: #0c0c0c;
+    color: #fff;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+h1 {
+    font-size: calc(1rem + 4.15vw);
+    line-height: calc(1rem + 4.5vw);
+}
+
+h2 {
+    font-size: calc(1rem + 3vw);
+    line-height: calc(1rem + 3.5vw);
+}
