@@ -17,15 +17,17 @@
 </head>
 
 <body>
-    <header id="main-header" class="pt-24">
-        <div class="container flex items-center justify-between fixed top-4">
-            <a class="block" href="/" data-id="logo">
-                <img class="h-14" src="./assets/images/logo.png" alt="logo" />
-            </a>
-            <a class="flex justify-center items-center gap-2 align-middle" href="#">
-                <span>Menu</span>
-                <i class="fa-solid fa-bars-staggered"></i>
-            </a>
+    <header id="main-header" class="pt-24 relative z-[9999]">
+        <div class="fixed top-4 w-full">
+            <div class="container flex items-center justify-between">
+                <a class="block" href="/" data-id="logo">
+                    <img class="h-14" src="./assets/images/logo.png" alt="logo" />
+                </a>
+                <a class="flex justify-center items-center gap-2 align-middle" href="#">
+                    <span>Menu</span>
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </a>
+            </div>
         </div>
     </header>
 
@@ -41,15 +43,32 @@
 
         <div id="content">
             <section data-id="pinned-image-text">
-                <div id="pinned-image-wrapper" class="relative z-0">
+                <div id="pinned-image-wrapper" class="relative -z-10 h-[300vh]">
                     <img id="pinned-image" 
-                    class="w-full object-cover mx-auto scale-75" 
+                    class="w-full h-screen object-cover sticky top-0 -z-20 mx-auto scale-75" 
                     style="clip-path: inset(0% 30% 0% 30%);" 
                     src="./assets/images/hero.jpg" 
                     alt="laptop" />
+                    <div id="pinned-gradient" class="opacity-0 sticky top-0 w-full h-screen z-20">
+                        <div class="absolute bottom-0 bg-gradient-to-t from-black to-black/0 h-[50vh] w-full"></div>
+                    </div>
                 </div>
-                <div id="pinned-content" class="relative z-10">
-                    <h2 class="uppercase font-bold text-center">Stand out from the crowd and make a statement with our sleek and stylish portfolio template that speaks volumes about your creativity.</h2>
+                <div id="pinned-content" class="relative z-10 pb-20 h-0">
+                    <h2 class="reveal-type uppercase font-bold text-center -translate-y-[120%]">
+                        Stand out from the crowd and make a statement with our sleek and stylish portfolio template that speaks volumes about your creativity.
+                    </h2>
+                </div>
+            </section>
+            <section data-id="three-column-caption">
+                <div class="container">
+                    <div class="grid grid-cols-3">
+                        <p>2023</p>
+                        <p>Portfolio Website</p>
+                        <div>
+                            <p>Our template pages are a playground for creativity, where we leverage an assortment of shortcodes to build captivating content. This enables us to demonstrate the limitless potential and showcase the impressive features of our template.</p>
+                            <a href="#" class="button-1">Learn More <i></i></a>
+                        </div>
+                    </div>
                 </div>
             </section>
             <div id="demo-spacer" class="h-screen"></div>
@@ -63,6 +82,7 @@
         integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.25/bundled/lenis.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
     <script src="./assets/js/main.js"></script>
 </body>
 

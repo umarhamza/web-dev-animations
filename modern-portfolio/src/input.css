@@ -3,11 +3,13 @@
 @tailwind utilities;
 
 body {
-    font-family: 'Montserrat', sans-serif;    
+    font-family: 'Montserrat', sans-serif;
     background: #0c0c0c;
     color: #fff;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 body::-webkit-scrollbar {
@@ -22,4 +24,22 @@ h1 {
 h2 {
     font-size: calc(1rem + 3vw);
     line-height: calc(1rem + 3.5vw);
+}
+
+@layer components {
+    .container {
+        @apply mx-auto;
+    }
+
+    .button-1 {
+        @apply py-4 text-xl flex justify-start items-center;
+    }
+
+    .button-1 i {
+        @apply transition flex text-black w-[1.7em] h-[1.7em] bg-white rounded-full translate-x-2 scale-[0.25] overflow-hidden;
+    }
+
+    .button-1:hover i {
+        @apply scale-100 translate-x-5
+    }
 }
